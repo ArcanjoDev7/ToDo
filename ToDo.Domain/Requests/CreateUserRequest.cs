@@ -1,0 +1,9 @@
+﻿namespace ToDo.Domain.Requests
+{
+    public record CreateUserRequest
+    {
+        public required string Name { get; set; }
+        public required string Email { get; set; }
+        public required string Password { get; set; }
+    }
+}

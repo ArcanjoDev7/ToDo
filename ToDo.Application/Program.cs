@@ -41,7 +41,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<ITokenService, TokenService>();
+builder.Services.AddTransient<ITokenService, TokenService>(s => new TokenService(builder.Configuration.GetValue<string>("Secret")));
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("default"), x => x.MigrationsAssembly("ToDo.Application"));
@@ -61,8 +61,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();

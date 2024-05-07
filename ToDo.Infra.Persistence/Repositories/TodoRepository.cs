@@ -14,7 +14,6 @@ namespace ToDo.Infra.Persistence.Repositories
                 .Where(t => t.UserId == userId)
                 .ToListAsync();
         }
-
         public async Task<Todo?> GetAsync(Guid id)
         {
             return await Context.Todos
