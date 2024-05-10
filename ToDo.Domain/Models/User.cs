@@ -17,6 +17,6 @@ namespace ToDo.Domain.Models
 
 
         [ForeignKey("UserId")]
-        public List<User> Users { get; set; } = new();
+        public List<Todo> Todos { get; set; } = new();
     }
 }
